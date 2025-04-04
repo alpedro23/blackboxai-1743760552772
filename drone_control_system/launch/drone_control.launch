@@ -21,6 +21,13 @@
         <param name="gpio_pin" type="int" value="18"/>
     </node>
 
+    <!-- Video Streaming Node -->
+    <node name="video_streamer" pkg="drone_control_system" 
+          type="video_streamer" output="screen">
+        <param name="camera_index" type="int" value="0"/>
+        <param name="frame_rate" type="double" value="30.0"/>
+    </node>
+
     <!-- Parameters -->
     <param name="avoidance_distance" type="double" value="5.0"/>
     <param name="max_altitude" type="double" value="100.0"/>
