@@ -60,7 +60,13 @@ target_link_libraries(servo_control ${catkin_LIBRARIES} wiringPi)
 add_executable(video_streamer src/video_streamer.cpp)
 target_link_libraries(video_streamer ${catkin_LIBRARIES} ${OpenCV_LIBS})
 
-install(TARGETS waypoint_processor sensor_processor servo_control video_streamer
+add_executable(object_tracker src/object_tracker.cpp)
+target_link_libraries(object_tracker ${catkin_LIBRARIES} ${OpenCV_LIBS})
+
+add_executable(soil_sampler src/soil_sampler.cpp)
+target_link_libraries(soil_sampler ${catkin_LIBRARIES} wiringPi)
+
+install(TARGETS waypoint_processor sensor_processor servo_control video_streamer object_tracker soil_sampler
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
