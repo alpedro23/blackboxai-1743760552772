@@ -1,0 +1,29 @@
+<launch>
+    <!-- MAVROS and ArduPilot connection -->
+    <arg name="fcu_url" default="serial:///dev/ttyUSB0:57600"/>
+    <arg name="gcs_url" default="udp://@192.168.1.2:14550"/>
+    
+    <include file="$(find mavros)/launch/apm.launch">
+        <arg name="fcu_url" value="$(arg fcu_url)"/>
+        <arg name="gcs_url" value="$(arg gcs_url)"/>
+    </include>
+
+    <!-- Our nodes -->
+    <node name="waypoint_processor" pkg="drone_control_system" 
+          type="waypoint_processor" output="screen"/>
+          
+    <node name="sensor_processor" pkg="drone_control_system" 
+          type="sensor_processor" output="screen"/>
+
+    <!-- Servo Control Node -->
+    <node name="servo_control" pkg="drone_control_system" 
+          type="servo_control" output="screen">
+        <param name="gpio_pin" type="int" value="18"/>
+    </node>
+
+    <!-- Parameters -->
+    <param name="avoidance_distance" type="double" value="5.0"/>
+    <param name="max_altitude" type="double" value="100.0"/>
+    <param name="servo_min_pulse" type="int" value="1000"/>
+    <param name="servo_max_pulse" type="int" value="2000"/>
+</launch>
