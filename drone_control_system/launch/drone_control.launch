@@ -28,6 +28,19 @@
         <param name="frame_rate" type="double" value="30.0"/>
     </node>
 
+    <!-- Object Tracking Node -->
+    <node name="object_tracker" pkg="drone_control_system"
+          type="object_tracker" output="screen">
+        <remap from="/camera/image_raw" to="/video_streamer/image"/>
+    </node>
+
+    <!-- Soil Sampling Node -->
+    <node name="soil_sampler" pkg="drone_control_system"
+          type="soil_sampler" output="screen">
+        <param name="drill_pin" type="int" value="18"/>
+        <param name="collector_pin" type="int" value="19"/>
+    </node>
+
     <!-- Parameters -->
     <param name="avoidance_distance" type="double" value="5.0"/>
     <param name="max_altitude" type="double" value="100.0"/>
