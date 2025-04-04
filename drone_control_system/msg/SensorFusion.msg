@@ -1,0 +1,10 @@
+Header header
+geometry_msgs/Quaternion orientation
+geometry_msgs/Vector3 angular_velocity
+geometry_msgs/Vector3 linear_acceleration
+float64 latitude
+float64 longitude
+float64 altitude
+bool armed
+bool connected
+string mode
