@@ -11,6 +11,8 @@ find_package(catkin REQUIRED COMPONENTS
   mavros_msgs
   tf2_ros
   message_generation
+  image_transport
+  cv_bridge
 )
 
 find_package(wiringPi REQUIRED)
@@ -55,7 +57,10 @@ target_link_libraries(sensor_processor ${catkin_LIBRARIES})
 add_executable(servo_control src/servo_control.cpp)
 target_link_libraries(servo_control ${catkin_LIBRARIES} wiringPi)
 
-install(TARGETS waypoint_processor sensor_processor
+add_executable(video_streamer src/video_streamer.cpp)
+target_link_libraries(video_streamer ${catkin_LIBRARIES} ${OpenCV_LIBS})
+
+install(TARGETS waypoint_processor sensor_processor servo_control video_streamer
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
