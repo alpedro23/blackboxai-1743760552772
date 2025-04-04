@@ -22,4 +22,9 @@
   <depend>wiringpi</depend>
   <depend>roscpp</depend>
   <depend>std_msgs</depend>
+  <depend>mavlink</depend>
+  <depend>mavros_msgs</depend>
+  <depend>image_transport</depend>
+  <depend>cv_bridge</depend>
+  <depend>sensor_msgs</depend>
 </package>
